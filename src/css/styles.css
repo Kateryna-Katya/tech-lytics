@@ -1,15 +1,520 @@
-/**
-  |============================
-  | include css partials with
-  | default @import url()
-  |============================
-*/
-/* Common styles */
-@import url('./reset.css');
-@import url('./base.css');
-@import url('./container.css');
+/* ==========================================================================
+   0. Глобальные стили и переменные
+   ========================================================================== */
+:root {
+  /* Цвета */
+  --color-primary: #007BFF;
+  /* Синий (Технологии) */
+  --color-secondary: #FF4D4D;
+  /* Кораллово-красный (Энергия, CTA) */
+  --color-background: #FFFFFF;
+  /* Чистый белый фон */
+  --color-text: #333333;
+  /* Темный текст */
+  --color-neutral: #E9ECEF;
+  /* Светлый серый/Бордер */
+  --color-white: #ffffff;
 
-/* Sections style */
-@import url('./header.css');
-@import url('./main.css');
-@import url('./footer.css');
+  /* Шрифты */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+
+  /* Отступы */
+  --space-sm: 1rem;
+  /* 16px */
+  --space-md: 2rem;
+  /* 32px */
+  --space-lg: 4rem;
+  /* 64px */
+  --space-xl: 6rem;
+  /* 96px */
+
+  /* Другое */
+  --border-radius: 0.5rem;
+  --transition-speed: 0.3s;
+}
+
+/* Сброс стилей */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Базовые стили body (Mobile-First) */
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Стили для ссылок и заголовков */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  color: var(--color-secondary);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+.main {
+  flex-grow: 1;
+}
+
+/* Базовый контейнер */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
+}
+
+/* ==========================================================================
+   1. Стили для Кнопок
+   ========================================================================== */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--transition-speed);
+}
+
+.button--primary {
+  background-color: var(--color-primary);
+  /* Синий */
+  color: var(--color-white);
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+}
+
+.button--primary:hover {
+  background-color: var(--color-secondary);
+  /* Красный */
+  box-shadow: 0 4px 20px rgba(255, 77, 77, 0.5);
+  transform: translateY(-2px);
+}
+
+.button--secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  box-shadow: 0 4px 15px rgba(255, 77, 77, 0.4);
+}
+
+.button--secondary:hover {
+  background-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.button--small {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   2. Стили для Логотипа
+   ========================================================================== */
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  transition: color var(--transition-speed), transform 0.2s ease-out;
+}
+
+.logo:hover {
+  color: var(--color-secondary);
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   3. Стили для Header (Этап 1)
+   ========================================================================== */
+.header {
+  background-color: var(--color-white);
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-neutral);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__burger {
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-primary);
+  padding: 0.5rem;
+}
+
+.header__burger svg {
+  width: 28px;
+  height: 28px;
+}
+
+.header__nav {
+  display: none;
+}
+
+/* Навигационное меню (мобильное/планшетное) */
+.nav__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: var(--space-sm);
+  background-color: var(--color-white);
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 100%;
+  border-top: 1px solid var(--color-neutral);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav__link {
+  font-weight: 500;
+  color: var(--color-text);
+  display: block;
+  padding: 0.5rem 0;
+  transition: color var(--transition-speed);
+}
+
+.nav__link:hover {
+  color: var(--color-primary);
+}
+
+.nav__link--cta {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+.nav__link--cta:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.header__nav.is-open {
+  display: block;
+}
+
+
+/* Десктопная версия (>= 768px) */
+@media (min-width: 768px) {
+  .header__burger {
+    display: none;
+  }
+
+  .header__nav {
+    display: block;
+    position: static;
+  }
+
+  .nav__list {
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+  }
+
+  .nav__link {
+    padding: 0.5rem 0.75rem;
+    color: var(--color-text);
+  }
+
+  .nav__link:hover {
+    color: var(--color-primary);
+  }
+
+  .nav__link--cta {
+    color: var(--color-white);
+    background-color: var(--color-secondary);
+    padding: 0.5rem 1rem;
+  }
+
+  .nav__link--cta:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-1px);
+  }
+}
+
+
+/* ==========================================================================
+   4. Стили для Footer (Этап 2)
+   ========================================================================== */
+.footer {
+  background-color: var(--color-text);
+  /* Темный фон */
+  color: var(--color-neutral);
+  padding-top: var(--space-lg);
+  flex-shrink: 0;
+}
+
+.footer__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  padding-bottom: var(--space-md);
+}
+
+.footer__logo {
+  color: var(--color-secondary);
+  /* Красный акцент */
+  font-size: 1.75rem;
+}
+
+.footer__logo:hover {
+  color: var(--color-primary);
+}
+
+.footer__text {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer__legal-note {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #ADB5BD;
+}
+
+.footer__heading {
+  color: var(--color-white);
+  font-size: 1.1rem;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+}
+
+.footer__list {
+  list-style: none;
+}
+
+.footer__list li {
+  margin-bottom: 0.6rem;
+}
+
+.footer__link {
+  color: var(--color-neutral);
+  font-size: 0.9rem;
+  transition: color var(--transition-speed);
+}
+
+.footer__link:hover {
+  color: var(--color-secondary);
+}
+
+/* Стили для контактов */
+.footer__contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.footer__contact-item svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-primary);
+  /* Синий акцент */
+  flex-shrink: 0;
+}
+
+.footer__address {
+  font-style: normal;
+  font-size: 0.9rem;
+  color: var(--color-neutral);
+}
+
+/* Нижняя часть футера (Копирайт) */
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem var(--space-sm);
+  text-align: center;
+}
+
+.footer__copy {
+  font-size: 0.75rem;
+  color: #ADB5BD;
+}
+
+
+/* Десктопная версия (>= 768px) */
+@media (min-width: 768px) {
+  .footer__container {
+    grid-template-columns: 2fr 1.5fr 1.5fr 2fr;
+    /* 4 колонки в ряд */
+    gap: var(--space-md);
+    padding: 0 var(--space-md) var(--space-md);
+  }
+}
+
+
+/* ==========================================================================
+   5. Стилизация страниц политик (Этап 5 - для читабельности)
+   ========================================================================== */
+.main--policy {
+  padding: var(--space-lg) 0;
+  background-color: var(--color-background);
+}
+
+.policy__content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: var(--space-md);
+  background-color: var(--color-white);
+  /* Белый фон */
+  border: 1px solid var(--color-neutral);
+  border-radius: var(--border-radius);
+}
+
+.policy__content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+  border-bottom: 3px solid var(--color-secondary);
+  padding-bottom: 0.5rem;
+}
+
+.policy__content h2 {
+  font-size: 1.8rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+
+.policy__content h3 {
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-primary);
+}
+
+.policy__content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.policy__content ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.policy__content li {
+  margin-bottom: 0.5rem;
+}
+
+.policy__content strong {
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+.policy__content a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   6. Cookie Pop-up (Этап 5 - Стили)
+   ========================================================================== */
+.cookie-popup {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-md) var(--space-sm);
+  background-color: var(--color-text);
+  color: var(--color-white);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.4s ease-out;
+  transform: translateY(0);
+}
+
+.cookie-popup.is-hidden {
+  transform: translateY(100%);
+}
+
+.cookie-popup__text {
+  font-size: 0.9rem;
+  margin: 0;
+  text-align: center;
+}
+
+.cookie-popup__link {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.cookie-popup__link:hover {
+  color: var(--color-secondary);
+}
+
+.cookie-popup__button {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: none;
+}
+
+.cookie-popup__button:hover {
+  background-color: var(--color-secondary);
+  transform: none;
+}
+
+@media (min-width: 768px) {
+  .cookie-popup {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem var(--space-md);
+  }
+
+  .cookie-popup__text {
+    text-align: left;
+  }
+}
