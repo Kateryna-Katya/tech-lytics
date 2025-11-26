@@ -839,3 +839,87 @@ h4 {
     gap: var(--space-lg);
   }
 }
+/* ==========================================================================
+   10. Стили для Секции Технологии (Этап 3.4)
+   ========================================================================== */
+.technology {
+  padding: var(--space-xl) 0;
+  text-align: center;
+  background-color: var(--color-white);
+  /* Белый фон */
+}
+
+.technology__heading {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 0.75rem;
+}
+
+.technology__subtext {
+  font-size: 1.15rem;
+  color: var(--color-text);
+  max-width: 800px;
+  margin: 0 auto 3.5rem;
+  opacity: 0.8;
+}
+
+.technology__grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  /* 2 колонки на мобильных */
+  gap: var(--space-md);
+  max-width: 1000px;
+  margin: 0 auto 3rem;
+}
+
+/* Стили для карточки Технологии */
+.tech-item {
+  background-color: var(--color-neutral);
+  /* Светлый фон карточки */
+  padding: 1.5rem 1rem;
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  border: 1px solid var(--color-neutral);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.tech-item:hover {
+  transform: translateY(-5px);
+  background-color: rgba(0, 123, 255, 0.05);
+  /* Легкий синий фон при наведении */
+  border-color: var(--color-primary);
+}
+
+.tech-item__icon {
+  width: 48px;
+  height: 48px;
+  color: var(--color-secondary);
+  /* Красный цвет иконки */
+  margin-bottom: 0.75rem;
+}
+
+.tech-item__title {
+  font-size: 1.2rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* Адаптивность для сетки */
+@media (min-width: 600px) {
+  .technology__grid {
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 колонки на планшетах */
+  }
+}
+
+@media (min-width: 992px) {
+  .technology__grid {
+    grid-template-columns: repeat(3, 1fr);
+    /* 6 колонок на десктопе */
+    gap: var(--space-lg);
+  }
+}
