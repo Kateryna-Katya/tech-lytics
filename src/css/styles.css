@@ -117,6 +117,7 @@ h4 {
   /* Красный */
   box-shadow: 0 4px 20px rgba(255, 77, 77, 0.5);
   transform: translateY(-2px);
+    color: var(--color-white);
 }
 
 .button--secondary {
@@ -127,6 +128,7 @@ h4 {
 
 .button--secondary:hover {
   background-color: var(--color-primary);
+    color: var(--color-white);
   transform: translateY(-2px);
 }
 
@@ -262,7 +264,7 @@ h4 {
   }
 
   .nav__link:hover {
-    color: var(--color-primary);
+    color: var(--color-secondary);
   }
 
   .nav__link--cta {
@@ -274,6 +276,7 @@ h4 {
   .nav__link--cta:hover {
     background-color: var(--color-primary);
     transform: translateY(-1px);
+      color: var(--color-white);
   }
 }
 
@@ -500,6 +503,12 @@ h4 {
   background-color: var(--color-primary);
   color: var(--color-white);
   box-shadow: none;
+  width: 100px;
+  height: 40px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color var(--transition-speed), transform var(--transition-speed);  
+  border: none;
 }
 
 .cookie-popup__button:hover {
@@ -516,5 +525,236 @@ h4 {
 
   .cookie-popup__text {
     text-align: left;
+  }
+}
+
+
+/* ==========================================================================
+   7. Стили для Hero-Секции (Этап 3.1)
+   ========================================================================== */
+.hero {
+  padding: var(--space-xl) 0;
+  min-height: 80vh;
+  /* Высота на мобильных */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  color: var(--color-white);
+  /* Весь текст белый для контраста с фоном */
+}
+
+/* Keyframes для эффекта увеличения фона */
+@keyframes backgroundZoom {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Фон-заглушка */
+  background-image: url('/img/one.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+
+  /* Применение анимации */
+  animation: backgroundZoom 15s ease-out infinite alternate;
+}
+
+/* Оверлей для улучшения читаемости */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  /* Темный полупрозрачный слой */
+  z-index: 2;
+}
+
+.hero__container {
+  position: relative;
+  z-index: 3;
+  /* Контент поверх оверлея */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero__subtitle {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-secondary);
+  /* Красный акцент */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.hero__title {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  max-width: 900px;
+  color: var(--color-white);
+}
+
+.hero__highlight {
+  display: block;
+  /* Перенос на новую строку на мобильных */
+  color: var(--color-primary);
+  /* Синий акцент */
+}
+
+.hero__text {
+  text-align: center;
+  font-size: 1.25rem;
+  max-width: 700px;
+  margin-bottom: 3rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 350px;
+}
+
+/* Десктопная версия (>= 992px) */
+@media (min-width: 992px) {
+  .hero {
+    min-height: 90vh;
+  }
+
+  .hero__highlight {
+    display: inline;
+    /* Возвращаем в одну строку на десктопе */
+  }
+
+  .hero__actions {
+    flex-direction: row;
+    max-width: none;
+    width: auto;
+    justify-content: center;
+  }
+}
+/* ==========================================================================
+   8. Стили для Секции "О нас" (Этап 3.2)
+   ========================================================================== */
+.about {
+  padding: var(--space-xl) 0;
+  background-color: var(--color-background);
+}
+
+.about__container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.about__content {
+  text-align: left;
+}
+
+.about__title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+  border-left: 5px solid var(--color-secondary);
+  /* Красная линия для акцента */
+  padding-left: 1rem;
+  line-height: 1.2;
+}
+
+.about__text {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Визуальный блок */
+.about__visual {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-out;
+}
+
+.about__visual:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 123, 255, 0.2);
+}
+
+.about__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.about__metric {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-secondary);
+  /* Красный фон */
+  color: var(--color-white);
+  padding: 0.75rem 1.25rem;
+  border-top-right-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.about__metric-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.5rem;
+}
+
+/* Десктопная версия (>= 992px) */
+@media (min-width: 992px) {
+  .about__container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .about__content {
+    max-width: 48%;
+  }
+
+  .about__visual {
+    max-width: 45%;
+  }
+
+  /* Смена порядка для лучшего визуала */
+  .about__content {
+    order: 1;
+  }
+
+  .about__visual {
+    order: 2;
   }
 }
