@@ -16,7 +16,7 @@
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Roboto:wght@400;500;700&display=swap"
     rel="stylesheet">
     <script type="module" crossorigin src="/test/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/test/assets/styles-BT5aVwU3.css">
+    <link rel="stylesheet" crossorigin href="/test/assets/styles-JmBqXd5e.css">
   </head>
   <body>
     <header class="header">
@@ -316,7 +316,61 @@ Tech-Lytics — это ваш надёжный партнёр, который п
                     Начать проект: Пройти регистрацию
                 </a>
             </div>
-        </section>
+</section>
+<section class="contact" id="contact">
+    <div class="contact__container container">
+        <h2 class="contact__heading">
+            Связаться с Нами
+        </h2>
+        <p class="contact__subtext">
+            Готовы открыть новые возможности? Получите бесплатную консультацию по всем вопросам от нашей
+            команды.
+        </p>
+
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <label for="contactName">Ваше Имя</label>
+                <input type="text" id="contactName" name="name" required placeholder="Марио Росси">
+            </div>
+
+            <div class="form-group">
+                <label for="contactEmail">Email</label>
+                <input type="email" id="contactEmail" name="email" required placeholder="example@tech-lytics.today">
+            </div>
+
+            <div class="form-group">
+                <label for="contactPhone">Номер Телефона</label>
+                <input type="tel" id="contactPhone" name="phone" required placeholder="+39 06 9480 XXXX">
+            </div>
+
+            <div class="form-group captcha-group">
+                <label for="captchaInput">CAPTCHA: Решите пример</label>
+                <div class="captcha-box">
+                    <span id="captchaDisplay" class="captcha-box__display">1 + 1 = ?</span>
+                    <input type="text" id="captchaInput" name="captcha" required placeholder="Ваш ответ">
+                </div>
+                <p class="captcha-message" id="captchaMessage"></p>
+            </div>
+
+            <div class="form-group form-group--checkbox">
+                <input type="checkbox" id="policyAccept" name="policyAccept" required>
+                <label for="policyAccept" class="checkbox-label">
+                    Я согласен с <a href="terms.html">условиями использования</a> и <a href="privacy.html">политикой
+                        конфиденциальности</a>.
+                </label>
+            </div>
+
+            <button type="submit" class="button button--secondary contact-form__button">
+                Пройти регистрацию
+            </button>
+
+            <div class="submission-message" id="submissionMessage" style="display: none;">
+                Grazie! Ваш запрос принят. Мы скоро свяжемся с вами.
+            </div>
+        </form>
+
+    </div>
+</section>
     </main>
 
     <footer class="footer">
