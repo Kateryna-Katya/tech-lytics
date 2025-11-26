@@ -1035,3 +1035,150 @@ h4 {
     gap: var(--space-md);
   }
 }
+/* ==========================================================================
+   12. Стили для Секции Процесс (Этап 3.6) - ОБНОВЛЕНО ДЛЯ АНИМАЦИИ
+   ========================================================================== */
+.process {
+  padding: var(--space-xl) 0;
+  text-align: center;
+  background-color: var(--color-background);
+  /* Белый фон */
+  position: relative;
+  /* Для возможных абсолютных элементов */
+}
+
+/* Добавляем декоративную волнистую линию на фоне */
+.process::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(circle at top left, var(--color-neutral) 1px, transparent 0),
+    radial-gradient(circle at bottom right, var(--color-neutral) 1px, transparent 0);
+  background-size: 40px 40px;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.process__heading,
+.process__subtext {
+  position: relative;
+  /* Поверх фонового паттерна */
+  z-index: 1;
+}
+
+
+/* ... (існуючі стилі .process__heading, .process__subtext) ... */
+
+.process__timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  padding-top: 1rem;
+  z-index: 1;
+  /* Поверх фонового паттерна */
+}
+
+/* Вертикальная линия - сделаем её более выразительной */
+.process__timeline::before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  /* Толще */
+  height: 100%;
+  background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+  /* Градиент */
+  left: 20px;
+  /* Позиционирование слева на мобильных */
+  top: 0;
+  border-radius: 2px;
+}
+
+/* Стили для отдельного шага - начальное состояние для анимации */
+.process__step {
+  position: relative;
+  margin-bottom: var(--space-lg);
+  padding-left: 60px;
+  /* Отступ для контента */
+  text-align: left;
+
+  opacity: 0;
+  /* Изначально скрыт */
+  transform: translateY(30px);
+  /* Смещение вниз */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  /* Плавный переход */
+}
+
+/* Класс для активного состояния (появляется через JS) */
+.process__step.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Круглый индикатор шага (НОМЕР) */
+.process__number {
+  /* ... (існуючі стилі) ... */
+  border: 3px solid var(--color-white);
+  /* Белый ободок */
+  box-shadow: 0 0 0 5px var(--color-background), 0 4px 10px rgba(0, 0, 0, 0.2);
+  /* Тень */
+}
+
+/* ... (існуючі стилі .process__step:hover .process__number) ... */
+
+.process__title {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+  /* Синий */
+}
+
+.process__description {
+  font-size: 1rem;
+  color: var(--color-text);
+  opacity: 0.9;
+}
+
+/* Адаптивность для десктопа (по центру) */
+@media (min-width: 768px) {
+  .process__timeline::before {
+    left: 50%;
+    margin-left: -2px;
+    /* Центрируем линию (половина ширины) */
+  }
+
+  .process__step {
+    width: 50%;
+    margin-left: 50%;
+    padding-left: 45px;
+    /* Отступ справа от линии */
+    padding-right: 15px;
+    text-align: left;
+  }
+
+  .process__number {
+    left: 50%;
+    margin-left: -20px;
+    /* Центрируем номер на линии */
+  }
+
+  /* Шаги с левой стороны линии */
+  .process__step:nth-child(odd) {
+    margin-left: 0;
+    padding-left: 15px;
+    padding-right: 45px;
+    /* Отступ слева от линии */
+    text-align: right;
+  }
+
+  .process__step:nth-child(odd) .process__number {
+    left: auto;
+    right: 50%;
+    margin-right: -20px;
+    /* Центрируем номер на линии */
+  }
+}

@@ -79,4 +79,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // ==========================================================================
     // Конец JS Анимации
+// ==========================================================================
     // ==========================================================================
+    // 4. JS Анимация Секции "Процесс" (Появление шагов при скролле)
+    // ==========================================================================
+    const processSteps = document.querySelectorAll('.process__step');
+
+    const observerOptions = {
+        root: null, // viewport
+        rootMargin: '0px',
+        threshold: 0.3 // 30% элемента должно быть видно
+    };
+
+    const observerCallback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target); // Остановить наблюдение после появления
+            }
+        });
+    };
+
+    const processObserver = new IntersectionObserver(observerCallback, observerOptions);
+
+    processSteps.forEach(step => {
+        processObserver.observe(step);
+    });
+    // ==========================================================================
+    // Конец JS Анимации Секции "Процесс"
+    // ==========================================================================
+ // Закрывающий тег для document.addEventListener('DOMContentLoaded', () => { ... });
