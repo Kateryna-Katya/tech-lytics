@@ -1,12 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page 2</title>
-    <link rel="stylesheet" crossorigin href="/test/assets/styles-JmBqXd5e.css">
-  </head>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Политика Конфиденциальности | Tech-Lytics</title>
+  <meta name="description"
+    content="Tech-Lytics — ваш партнер в разработке AI-ассистентов. От простых чатиков до Инновационная технология нового поколения.">
+
+  <link rel="icon" type="image/svg+xml" href="./favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet">
+  <script type="module" crossorigin src="/test/assets/main-BHqMQhzA.js"></script>
+  <link rel="stylesheet" crossorigin href="/test/assets/main-JmBqXd5e.css">
+</head>
   <body>
     <header class="header">
   <div class="header__container container">
@@ -30,13 +41,41 @@
   </div>
 </header>
 
-    <main>
-      <div class="container">
-        <h1 class="main-title">
-          <span class="main-title-gradient">Welcome</span> to page 2
-        </h1>
-      </div>
-    </main>
+<main class="main--policy">
+  <div class="policy__content">
+    <h1>Политика Конфиденциальности</h1>
+    <p class="date">Дата последнего обновления: 26 ноября 2025 г.</p>
+
+    <p>
+      Настоящая Политика Конфиденциальности описывает, как Tech-Lytics (далее "Компания") собирает, использует и
+      защищает информацию, полученную от Пользователей. Мы — ваш **проверенный партнер** в сфере **Технология нового
+      поколения** и строго соблюдаем положения GDPR.
+    </p>
+
+    <h2>1. Сбор и Использование Информации</h2>
+    <p>
+      Мы собираем информацию, которую Вы добровольно предоставляете нам:
+    </p>
+    <ul>
+      <li><strong>Идентификационные данные:</strong> Имя, email, номер телефона — для предоставления **бесплатная
+        консультация по всем вопросам**.</li>
+      <li><strong>Проектные данные:</strong> Информация, полученная в ходе **онлайн регистрации** для того, чтобы мы
+        могли **оценить перспективы проекта**.</li>
+    </ul>
+
+    <h2>2. Защита Данных и GDPR</h2>
+    <p>
+      Мы применяем современные технические и организационные меры для защиты Ваших данных. Вся информация обрабатывается
+      в соответствии со стандартами GDPR.
+    </p>
+
+    <h2>3. Файлы Cookie</h2>
+    <p>
+      Наш сайт использует файлы cookie для улучшения взаимодействия. При первом посещении **Доступ к платформе открыт**
+      только после Вашего согласия.
+    </p>
+  </div>
+</main>
 
     <footer class="footer">
   <div class="footer__container container">
@@ -99,5 +138,15 @@
   </div>
 </footer>
 
+        <div class="cookie-popup is-hidden" id="cookiePopup">
+          <p class="cookie-popup__text">Этот сайт использует cookies для улучшения работы. Подробнее — в нашей <a
+              href="cookies.html" class="cookie-popup__link">Cookie политике</a>.</p>
+          <button class="cookie-popup__button button--primary" id="acceptCookies">Принять</button>
+        </div>
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <script>
+          // Инициализация Lucide Icons
+          lucide.createIcons();
+        </script>
   </body>
 </html>
