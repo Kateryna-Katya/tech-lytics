@@ -1036,15 +1036,13 @@ h4 {
   }
 }
 /* ==========================================================================
-   12. Стили для Секции Процесс (Этап 3.6) - ОБНОВЛЕНО ДЛЯ АНИМАЦИИ
+   12. Стили для Секции Процесс (Этап 3.6) - ОБНОВЛЕНО: Новый стиль нумерации
    ========================================================================== */
 .process {
   padding: var(--space-xl) 0;
   text-align: center;
   background-color: var(--color-background);
-  /* Белый фон */
   position: relative;
-  /* Для возможных абсолютных элементов */
 }
 
 /* Добавляем декоративную волнистую линию на фоне */
@@ -1064,22 +1062,30 @@ h4 {
 }
 
 .process__heading,
-.process__subtext {
+.process__subtext,
+.process__timeline {
   position: relative;
-  /* Поверх фонового паттерна */
   z-index: 1;
 }
 
+.process__heading {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 0.75rem;
+}
 
-/* ... (існуючі стилі .process__heading, .process__subtext) ... */
+.process__subtext {
+  font-size: 1.15rem;
+  color: var(--color-text);
+  max-width: 800px;
+  margin: 0 auto 3.5rem;
+  opacity: 0.8;
+}
 
 .process__timeline {
   position: relative;
   max-width: 900px;
   margin: 0 auto 3rem;
   padding-top: 1rem;
-  z-index: 1;
-  /* Поверх фонового паттерна */
 }
 
 /* Вертикальная линия - сделаем её более выразительной */
@@ -1087,12 +1093,10 @@ h4 {
   content: '';
   position: absolute;
   width: 4px;
-  /* Толще */
   height: 100%;
   background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
   /* Градиент */
   left: 20px;
-  /* Позиционирование слева на мобильных */
   top: 0;
   border-radius: 2px;
 }
@@ -1102,15 +1106,11 @@ h4 {
   position: relative;
   margin-bottom: var(--space-lg);
   padding-left: 60px;
-  /* Отступ для контента */
   text-align: left;
 
   opacity: 0;
-  /* Изначально скрыт */
   transform: translateY(30px);
-  /* Смещение вниз */
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  /* Плавный переход */
 }
 
 /* Класс для активного состояния (появляется через JS) */
@@ -1119,22 +1119,44 @@ h4 {
   transform: translateY(0);
 }
 
-/* Круглый индикатор шага (НОМЕР) */
+/* Круглый индикатор шага (НОМЕР) - НОВЫЙ СТИЛЬ */
 .process__number {
-  /* ... (існуючі стилі) ... */
+  position: absolute;
+  left: 0;
+ top: -50px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-primary);
+  /* Синий фон */
+  color: var(--color-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+
+  /* Свечение и ободок */
   border: 3px solid var(--color-white);
   /* Белый ободок */
-  box-shadow: 0 0 0 5px var(--color-background), 0 4px 10px rgba(0, 0, 0, 0.2);
-  /* Тень */
+  box-shadow: 0 0 0 5px var(--color-background), 0 0 20px rgba(0, 123, 255, 0.4);
+  /* Синее свечение */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ... (існуючі стилі .process__step:hover .process__number) ... */
+.process__step:hover .process__number {
+  transform: scale(1.1);
+  background-color: var(--color-secondary);
+  /* Красный при наведении */
+  box-shadow: 0 0 0 5px var(--color-background), 0 0 20px rgba(255, 77, 77, 0.5);
+  /* Красное свечение */
+}
 
 .process__title {
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
   color: var(--color-primary);
-  /* Синий */
 }
 
 .process__description {
@@ -1148,14 +1170,12 @@ h4 {
   .process__timeline::before {
     left: 50%;
     margin-left: -2px;
-    /* Центрируем линию (половина ширины) */
   }
 
   .process__step {
     width: 50%;
     margin-left: 50%;
     padding-left: 45px;
-    /* Отступ справа от линии */
     padding-right: 15px;
     text-align: left;
   }
@@ -1163,7 +1183,6 @@ h4 {
   .process__number {
     left: 50%;
     margin-left: -20px;
-    /* Центрируем номер на линии */
   }
 
   /* Шаги с левой стороны линии */
@@ -1171,7 +1190,6 @@ h4 {
     margin-left: 0;
     padding-left: 15px;
     padding-right: 45px;
-    /* Отступ слева от линии */
     text-align: right;
   }
 
@@ -1179,6 +1197,5 @@ h4 {
     left: auto;
     right: 50%;
     margin-right: -20px;
-    /* Центрируем номер на линии */
   }
 }
