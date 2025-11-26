@@ -1199,3 +1199,174 @@ h4 {
     margin-right: -20px;
   }
 }
+/* ==========================================================================
+   14. Стили для Секции Контактов (Contact) (Этап 4)
+   ========================================================================== */
+.contact {
+  padding: var(--space-xl) 0;
+  text-align: center;
+  background-color: var(--color-neutral);
+  /* Светлый фон для контраста с белым body */
+}
+
+.contact__heading {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 0.75rem;
+  color: var(--color-primary);
+}
+
+.contact__subtext {
+  font-size: 1.25rem;
+  color: var(--color-text);
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  opacity: 0.9;
+}
+
+.contact-form {
+  max-width: 550px;
+  margin: 0 auto;
+  padding: var(--space-md);
+  background-color: var(--color-white);
+  /* Белый фон формы */
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-neutral);
+}
+
+.form-group {
+  margin-bottom: var(--space-md);
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-neutral);
+  border-radius: 4px;
+  font-size: 1rem;
+  color: var(--color-text);
+  background-color: var(--color-white);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+/* CAPTCHA Styles */
+.captcha-group {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-sm);
+  border-top: 1px dashed var(--color-neutral);
+}
+
+.captcha-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--color-neutral);
+  padding: 0.75rem;
+  border: 1px solid var(--color-neutral);
+  border-radius: 4px;
+}
+
+.captcha-box__display {
+  font-size: 1.2rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-secondary);
+  /* Красный акцент для примера */
+  padding: 0 0.5rem;
+  min-width: 100px;
+  text-align: center;
+}
+
+.captcha-box input {
+  flex-grow: 1;
+  color: var(--color-text);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-neutral);
+}
+
+.captcha-message {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  height: 1.2rem;
+}
+
+/* Стили для Чекбокса Конфиденциальности */
+.form-group--checkbox {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.form-group--checkbox input[type="checkbox"] {
+  margin-top: 5px;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-right: 0.75rem;
+  border: 1px solid var(--color-text);
+  background-color: var(--color-white);
+  appearance: none;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.form-group--checkbox input[type="checkbox"]:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.form-group--checkbox input[type="checkbox"]:checked::after {
+  content: '\2713';
+  font-size: 14px;
+  color: var(--color-white);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1;
+}
+
+.checkbox-label {
+  font-size: 0.95rem;
+  font-weight: 400;
+  cursor: pointer;
+  color: var(--color-text);
+}
+
+.checkbox-label a {
+  text-decoration: underline;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* Submission Message */
+.submission-message {
+  margin-top: var(--space-md);
+  padding: var(--space-sm);
+  background-color: #D4EDDA;
+  /* Light green */
+  color: #155724;
+  /* Dark green */
+  border: 1px solid #C3E6CB;
+  border-radius: 4px;
+  font-weight: 600;
+}
